@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { InputElement } from "../Tappable/Elements";
 import './Input.css';
 
 export interface InputProps {
@@ -74,7 +75,7 @@ const Input = (props: InputProps) => {
     return (
         props.hidden
             ? <></>
-            : <input
+            : <InputElement
                 className={className}
                 placeholder={props.label}
                 autoComplete={'none'}
@@ -82,7 +83,7 @@ const Input = (props: InputProps) => {
                 value={props.value ?? ''}
                 style={{ width: getWidth() }}
                 onKeyDown={handleKeyDown}
-                onClick={handleClick}
+                onTap={handleClick}
                 onFocus={handleFocus}
                 onBlur={() => setTouched(true)}
                 onChange={props.onChange} />

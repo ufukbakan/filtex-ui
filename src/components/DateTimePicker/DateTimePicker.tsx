@@ -4,6 +4,7 @@ import DatePicker from "../DatePicker/DatePicker";
 import TimePicker from "../TimePicker/TimePicker";
 
 import './DateTimePicker.css';
+import { Button } from "../Tappable/Elements";
 
 export interface DateTimePickerProps {
     hidden?: boolean;
@@ -96,8 +97,8 @@ const DateTimePicker = (props: DateTimePickerProps) => {
                 <TimePicker value={{ hour: value.hour, minute: value.minute, second: value.second }} onValueChange={handleTimeValueChange} hideActions={true} />
             </div>
             <div className="datetimepicker-actions">
-                <button onClick={() => handleValueReset()}>RESET</button>
-                <button onClick={() => handleValueChange()}>DONE</button>
+                <Button onTap={() => handleValueReset()}>RESET</Button>
+                <Button onTap={() => handleValueChange()}>DONE</Button>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import './Editor.css';
+import { TextArea } from "../Tappable/Elements";
 
 export interface OnChangeOptions {
     value: string;
@@ -143,7 +144,7 @@ const Editor = (props: EditorProps) => {
 
     return (
         <div className="editor">
-            <textarea
+            <TextArea
                 ref={props.inputRef}
                 value={value}
                 onChange={handleChange}
@@ -151,7 +152,7 @@ const Editor = (props: EditorProps) => {
                 onKeyDown={handleKeyDown}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                onClick={handleClick}
+                onTap={handleClick}
                 onDoubleClick={handleDoubleClick}
                 onScrollCapture={handleScrollCapture}
                 placeholder={label}

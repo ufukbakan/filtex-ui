@@ -1,12 +1,13 @@
-import React, {useCallback, useContext, useEffect, useMemo, useState} from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { TokenType } from "../../constants";
-import {Metadata, Token} from "../../models";
-import {QuerySuggester} from "../../suggesters";
+import { Metadata, Token } from "../../models";
+import { QuerySuggester } from "../../suggesters";
 import { JsonQueryTokenizer } from "../../tokenizers";
 import Input from "../Input/Input";
 import { DropdownContext } from "../../contexts";
 
 import './QueryTree.css';
+import { Button } from "../Tappable/Elements";
 
 export interface QueryTreeProps {
     metadata: Metadata;
@@ -22,7 +23,7 @@ const QueryTree = (props: QueryTreeProps) => {
     const [tree, setTree] = useState<any>(['', ['', '', '']]);
     const [tokensTree, setTokensTree] = useState<any>([new Token(TokenType.TokenTypeNone, ''), [[new Token(TokenType.TokenTypeNone, ''), new Token(TokenType.TokenTypeNone, ''), new Token(TokenType.TokenTypeNone, '')]]]);
 
-    const jsonQueryTokenizer =  useMemo(() => new JsonQueryTokenizer(props.metadata), [props.metadata]);
+    const jsonQueryTokenizer = useMemo(() => new JsonQueryTokenizer(props.metadata), [props.metadata]);
     const querySuggester = useMemo(() => new QuerySuggester(props.metadata), [props.metadata]);
 
     const updateTokensTree = useCallback((tree: any[]) => {
@@ -220,7 +221,7 @@ const QueryTree = (props: QueryTreeProps) => {
                 if (prototypeValueSetter) {
                     prototypeValueSetter.call(el, value);
                 }
-                el.dispatchEvent(new Event('input', {bubbles: true}));
+                el.dispatchEvent(new Event('input', { bubbles: true }));
                 el.style.width = Math.max(85, Math.min(125, value.length * 10)) + 'px';
                 setTimeout(() => {
                     setOptions({ hidden: true });
@@ -332,7 +333,7 @@ const QueryTree = (props: QueryTreeProps) => {
         let values = result.suggestions;
 
         if (ev.target.value.length !== ev.target.selectionEnd - ev.target.selectionStart) {
-            values = values.filter((s) => s.value.toLowerCase().replace(/ /g,'').includes(ev.target.value.toLowerCase().replace(/ /g,'')));
+            values = values.filter((s) => s.value.toLowerCase().replace(/ /g, '').includes(ev.target.value.toLowerCase().replace(/ /g, '')));
         }
 
         openDropdown(ev, 'options', values.map(item => {
@@ -351,7 +352,7 @@ const QueryTree = (props: QueryTreeProps) => {
         let values = result.suggestions;
 
         if (ev.target.value.length !== ev.target.selectionEnd - ev.target.selectionStart) {
-            values = values.filter((s) => s.value.toLowerCase().replace(/ /g,'').includes(ev.target.value.toLowerCase().replace(/ /g,'')));
+            values = values.filter((s) => s.value.toLowerCase().replace(/ /g, '').includes(ev.target.value.toLowerCase().replace(/ /g, '')));
         }
 
         openDropdown(ev, 'options', values.map(item => {
@@ -373,7 +374,7 @@ const QueryTree = (props: QueryTreeProps) => {
         let values = result.suggestions;
 
         if (ev.target.value.length !== ev.target.selectionEnd - ev.target.selectionStart) {
-            values = values.filter((s) => s.value.toLowerCase().replace(/ /g,'').includes(ev.target.value.toLowerCase().replace(/ /g,'')));
+            values = values.filter((s) => s.value.toLowerCase().replace(/ /g, '').includes(ev.target.value.toLowerCase().replace(/ /g, '')));
         }
 
         openDropdown(ev, 'options', values.map(item => {
@@ -397,7 +398,7 @@ const QueryTree = (props: QueryTreeProps) => {
         let values = result.suggestions;
 
         if (ev.target.value.length !== ev.target.selectionEnd - ev.target.selectionStart) {
-            values = values.filter((s) => s.value.toLowerCase().replace(/ /g,'').includes(ev.target.value.toLowerCase().replace(/ /g,'')));
+            values = values.filter((s) => s.value.toLowerCase().replace(/ /g, '').includes(ev.target.value.toLowerCase().replace(/ /g, '')));
         }
 
         if (!isValueAllowed(data)) {
@@ -468,10 +469,10 @@ const QueryTree = (props: QueryTreeProps) => {
                             }}
                             onSubmit={handleSubmit}
                         />
-                        <button
+                        <Button
                             className="menu"
-                            onClick={(ev) => openGroupMenu(ev, path)}>...
-                        </button>
+                            onTap={(ev) => openGroupMenu(ev, path)}>...
+                        </Button>
                     </div>
                     <div className="indent">
                         {
@@ -549,10 +550,10 @@ const QueryTree = (props: QueryTreeProps) => {
                             onSubmit={handleSubmit}
                         />
                 }
-                <button
+                <Button
                     className="menu"
-                    onClick={(ev) => openRuleMenu(ev, path, data)}>...
-                </button>
+                    onTap={(ev) => openRuleMenu(ev, path, data)}>...
+                </Button>
             </div>
         );
     };

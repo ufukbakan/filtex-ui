@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import './Days.css';
+import { Button } from "../../Tappable/Elements";
 
 export interface DaysProps {
     hidden?: boolean;
     firstDayOfWeek?: number;
     year: number;
     month: number;
-    value: {year: number, month: number, day: number};
+    value: { year: number, month: number, day: number };
     onValueChange?: (year: number, month: number, day: number) => void;
     onYearRequested?: () => void;
     onMonthRequested?: () => void;
@@ -136,12 +137,12 @@ const Days = (props: DaysProps) => {
     return (
         <div className="days" hidden={props.hidden}>
             <div className="days-header">
-                <button onClick={decreaseYear}><span className="arrow-left"></span><span className="arrow-left"></span></button>
-                <button onClick={decreaseMonth}><span className="arrow-left"></span></button>
-                <button onClick={handleYearClick}>{year}</button>
-                <button onClick={handleMonthClick}>{getMonthName(year, month)}</button>
-                <button onClick={increaseMonth}><span className="arrow-right"></span></button>
-                <button onClick={increaseYear}><span className="arrow-right"></span><span className="arrow-right"></span></button>
+                <Button onTap={decreaseYear}><span className="arrow-left"></span><span className="arrow-left"></span></Button>
+                <Button onTap={decreaseMonth}><span className="arrow-left"></span></Button>
+                <Button onTap={handleYearClick}>{year}</Button>
+                <Button onTap={handleMonthClick}>{getMonthName(year, month)}</Button>
+                <Button onTap={increaseMonth}><span className="arrow-right"></span></Button>
+                <Button onTap={increaseYear}><span className="arrow-right"></span><span className="arrow-right"></span></Button>
             </div>
             <div className="days-names">
                 {
@@ -167,10 +168,10 @@ const Days = (props: DaysProps) => {
                         }
 
                         return (
-                            <button
+                            <Button
                                 key={item.year + '_' + item.month + '_' + item.day}
                                 className={classes.join(' ')}
-                                onClick={_ => onSelect(item.year, item.month, item.day)}>{item.day}</button>
+                                onTap={_ => onSelect(item.year, item.month, item.day)}>{item.day}</Button>
                         )
                     })
                 }

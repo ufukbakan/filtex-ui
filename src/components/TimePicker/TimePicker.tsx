@@ -1,6 +1,7 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import './TimePicker.css';
+import { Button } from "../Tappable/Elements";
 
 export interface TimePickerProps {
     hidden?: boolean;
@@ -171,36 +172,36 @@ const TimePicker = (props: TimePickerProps) => {
                 <div ref={hoursContainerRef} className="hours">
                     {
                         hours.map(h =>
-                            <button
+                            <Button
                                 key={'hour-' + h}
                                 className={value.hour === h ? 'selected' : ''}
-                                onClick={() => handleHourValueChange(h)}>
+                                onTap={() => handleHourValueChange(h)}>
                                 {h.toString().padStart(2, '0')}
-                            </button>
+                            </Button>
                         )
                     }
                 </div>
                 <div ref={minutesContainerRef} className="minutes">
                     {
                         minutes.map(m =>
-                            <button
+                            <Button
                                 key={'minute-' + m}
                                 className={value.minute === m ? 'selected' : ''}
-                                onClick={() => handleMinuteValueChange(m)}>
+                                onTap={() => handleMinuteValueChange(m)}>
                                 {m.toString().padStart(2, '0')}
-                            </button>
+                            </Button>
                         )
                     }
                 </div>
                 <div ref={secondsContainerRef} className="seconds">
                     {
                         seconds.map(s =>
-                            <button
+                            <Button
                                 key={'second-' + s}
                                 className={value.second === s ? 'selected' : ''}
-                                onClick={() => handleSecondValueChange(s)}>
+                                onTap={() => handleSecondValueChange(s)}>
                                 {s.toString().padStart(2, '0')}
-                            </button>
+                            </Button>
                         )
                     }
                 </div>
@@ -208,8 +209,8 @@ const TimePicker = (props: TimePickerProps) => {
             {
                 props.hideActions === true ? <></> :
                     <div className="timepicker-actions">
-                        <button onClick={() => handleValueReset()}>RESET</button>
-                        <button onClick={() => handleValueChange()}>DONE</button>
+                        <Button onTap={() => handleValueReset()}>RESET</Button>
+                        <Button onTap={() => handleValueChange()}>DONE</Button>
                     </div>
             }
         </div>

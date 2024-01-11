@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 import './Months.css';
+import { Button } from "../../Tappable/Elements";
 
 export interface MonthsProps {
     hidden?: boolean;
     year?: number;
     onYearRequested?: () => void;
-    onValueChange?: (year:number, month: number) => void;
+    onValueChange?: (year: number, month: number) => void;
 }
 
 const Months = (props: MonthsProps) => {
@@ -47,24 +48,24 @@ const Months = (props: MonthsProps) => {
     return (
         <div className="months" hidden={props.hidden}>
             <div className="months-header">
-                <button onClick={decreaseYear}><span className="arrow-left"></span><span className="arrow-left"></span></button>
-                <button onClick={handleYearClick}>{year}</button>
-                <button onClick={increaseYear}><span className="arrow-right"></span><span className="arrow-right"></span></button>
+                <Button onTap={decreaseYear}><span className="arrow-left"></span><span className="arrow-left"></span></Button>
+                <Button onTap={handleYearClick}>{year}</Button>
+                <Button onTap={increaseYear}><span className="arrow-right"></span><span className="arrow-right"></span></Button>
             </div>
             <div className="months-content">
                 {
                     months.filter(i => i % 3 === 0).map(i => {
                         return (
                             <div key={'months_' + (i) + '_' + (i + 2)}>
-                                <button
+                                <Button
                                     key={'month_' + (i + 1)}
-                                    onClick={_ => onMonthSelect(i + 1)}>{getMonthName(i + 1)}</button>
-                                <button
+                                    onTap={_ => onMonthSelect(i + 1)}>{getMonthName(i + 1)}</Button>
+                                <Button
                                     key={'month_' + (i + 2)}
-                                    onClick={_ => onMonthSelect(i + 2)}>{getMonthName(i + 2)}</button>
-                                <button
+                                    onTap={_ => onMonthSelect(i + 2)}>{getMonthName(i + 2)}</Button>
+                                <Button
                                     key={'month_' + (i + 3)}
-                                    onClick={_ => onMonthSelect(i + 3)}>{getMonthName(i + 3)}</button>
+                                    onTap={_ => onMonthSelect(i + 3)}>{getMonthName(i + 3)}</Button>
                             </div>
                         );
                     })

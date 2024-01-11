@@ -5,6 +5,7 @@ import Months from "./Months/Months";
 import Years from "./Years/Years";
 
 import './DatePicker.css';
+import { Button } from "../Tappable/Elements";
 
 export interface DatePickerProps {
     hidden?: boolean;
@@ -127,8 +128,8 @@ const DatePicker = (props: DatePickerProps) => {
             {
                 mode !== 'days' || props.hideActions === true ? <></> :
                     <div className="datepicker-actions">
-                        <button onClick={() => handleValueReset()}>RESET</button>
-                        <button onClick={() => handleValueChange()}>DONE</button>
+                        <Button onTap={() => handleValueReset()}>RESET</Button>
+                        <Button onTap={() => handleValueChange()}>DONE</Button>
                     </div>
             }
         </div>

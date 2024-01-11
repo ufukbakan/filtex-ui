@@ -4,6 +4,7 @@ import TimePicker from "../TimePicker/TimePicker";
 import DateTimePicker from "../DateTimePicker/DateTimePicker";
 
 import './Dropdown.css';
+import { Span } from "../Tappable/Elements";
 
 export interface DropdownProps {
     options?: any;
@@ -175,7 +176,7 @@ const Dropdown = (props: DropdownProps) => {
     }, [props.options, values]);
     useEffect(() => {
         if (hidden) {
-            window.onscroll = () => {};
+            window.onscroll = () => { };
         } else {
             const x = window.scrollX;
             const y = window.scrollY;
@@ -248,8 +249,8 @@ const Dropdown = (props: DropdownProps) => {
         <div ref={containerRef} className={props.options?.type === 'options' ? 'dropdown scrollable' : 'dropdown'} style={style} hidden={hidden} onWheel={handleWheel}>
             {
                 props.options?.type === 'options' && values.map((x: any, i: number) => (
-                    <span key={i} className={option === i ? 'item active' : 'item'}
-                          onClick={() => handleValueChange(x.value)}>{x.label}</span>
+                    <Span key={i} className={option === i ? 'item active' : 'item'}
+                        onTap={() => handleValueChange(x.value)}>{x.label}</Span>
                 ))
             }
 

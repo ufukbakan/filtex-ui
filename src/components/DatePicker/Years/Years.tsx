@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import './Years.css';
+import { Button } from "../../Tappable/Elements";
 
 export interface YearsProps {
     hidden?: boolean;
@@ -52,24 +53,24 @@ const Years = (props: YearsProps) => {
     return (
         <div className="years" hidden={props.hidden}>
             <div className="years-header">
-                <button onClick={decreaseYears}><span className="arrow-left"></span><span className="arrow-left"></span></button>
-                <button>{((years.at(0) ?? 0) + 1) + ' - ' + ((years.at(-1) ?? 0) + 1)}</button>
-                <button onClick={increaseYears}><span className="arrow-right"></span><span className="arrow-right"></span></button>
+                <Button onTap={decreaseYears}><span className="arrow-left"></span><span className="arrow-left"></span></Button>
+                <Button>{((years.at(0) ?? 0) + 1) + ' - ' + ((years.at(-1) ?? 0) + 1)}</Button>
+                <Button onTap={increaseYears}><span className="arrow-right"></span><span className="arrow-right"></span></Button>
             </div>
             <div className="years-content">
                 {
                     years.filter(i => i % 3 === 0).map(i => {
                         return (
                             <div key={'years_' + (i) + '_' + (i + 2)}>
-                                <button
+                                <Button
                                     key={'year_' + (i)}
-                                    onClick={_ => onYearSelect(i)}>{i}</button>
-                                <button
+                                    onTap={_ => onYearSelect(i)}>{i}</Button>
+                                <Button
                                     key={'year_' + (i + 1)}
-                                    onClick={_ => onYearSelect(i + 1)}>{i + 1}</button>
-                                <button
+                                    onTap={_ => onYearSelect(i + 1)}>{i + 1}</Button>
+                                <Button
                                     key={'year_' + (i + 2)}
-                                    onClick={_ => onYearSelect(i + 2)}>{i + 2}</button>
+                                    onTap={_ => onYearSelect(i + 2)}>{i + 2}</Button>
                             </div>
                         );
                     })

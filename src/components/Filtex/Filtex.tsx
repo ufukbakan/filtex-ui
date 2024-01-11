@@ -1,14 +1,14 @@
-import React, {createRef, useCallback, useEffect, useMemo, useState} from "react";
-import {Metadata} from "../../models";
-import {JsonQueryConverter, TextQueryConverter} from "../../converters";
-import {JsonQueryValidator, TextQueryValidator} from "../../validators";
-import {JsonQueryTokenizer, TextQueryTokenizer} from "../../tokenizers";
+import React, { createRef, useCallback, useEffect, useMemo, useState } from "react";
+import { Metadata } from "../../models";
+import { JsonQueryConverter, TextQueryConverter } from "../../converters";
+import { JsonQueryValidator, TextQueryValidator } from "../../validators";
+import { JsonQueryTokenizer, TextQueryTokenizer } from "../../tokenizers";
 import QueryText from "../QueryText/QueryText";
 import QueryTree from "../QueryTree/QueryTree";
 import Dropdown from "../Dropdown/Dropdown";
-import {DropdownContext, ThemeContext} from "../../contexts";
-import {DefaultTheme, FiltexTheme, Themes} from "../../themes";
-import {isArray, toRGB} from "../../utils";
+import { DropdownContext, ThemeContext } from "../../contexts";
+import { DefaultTheme, FiltexTheme, Themes } from "../../themes";
+import { isArray, toRGB } from "../../utils";
 
 import './Filtex.css';
 
@@ -284,7 +284,7 @@ const Filtex = (props: FiltexProps) => {
 
     return (
         <ThemeContext.Provider value={theme}>
-            <DropdownContext.Provider value={{options, setOptions}}>
+            <DropdownContext.Provider value={{ options, setOptions }}>
                 <div className="filtex" ref={filtexRef}>
                     {
                         modes.includes('text')
@@ -311,10 +311,10 @@ const Filtex = (props: FiltexProps) => {
                     {
                         buttons.length > 0
                             ? <>
-                                <button
+                                <Button
                                     className="menu"
-                                    onClick={(ev) => openFiltexMenu(ev)} style={{ rotate: '90deg' }}>...
-                                </button>
+                                    onTap={(ev) => openFiltexMenu(ev)} style={{ rotate: '90deg' }}>...
+                                </Button>
                             </>
                             : <></>
                     }
