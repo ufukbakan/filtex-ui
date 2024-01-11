@@ -21,7 +21,7 @@ export class JsonQueryValidator {
             const operatorToken = data[1] as Token;
 
             if (isArray(data[2])) {
-                for (let value of data[2] as Token[]) {
+                for (const value of data[2] as Token[]) {
                     if (value.type === TokenType.TokenTypeNone) {
                         throw newInvalidValueError();
                     }
@@ -47,7 +47,7 @@ export class JsonQueryValidator {
                 throw newInvalidLogicError();
             }
 
-            for (let item of data[1] as any[]) {
+            for (const item of data[1] as any[]) {
                 this.validateInternal(item);
             }
         } else {

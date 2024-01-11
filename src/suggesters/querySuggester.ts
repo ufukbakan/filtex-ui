@@ -71,7 +71,7 @@ export class QuerySuggester {
                 case TokenType.TokenTypeSlash:
                 case TokenType.TokenTypeComma: {
                     let prevFieldToken: Token | undefined;
-                    let prevValues: any[] = [];
+                    const prevValues: any[] = [];
 
                     for (let i = prevTokens.length - 1; i >= 0; i--) {
                         const prevToken = prevTokens[i];

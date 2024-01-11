@@ -39,7 +39,7 @@ export class JsonQueryTokenizer extends BaseQueryTokenizer {
             if (isArray(data[2])) {
                 const valueTokens: Token[] = [];
 
-                for (let v of array(data[2])) {
+                for (const v of array(data[2])) {
                     const valueString = string(v);
                     const valueMatch = this.findMatch(valueString);
 
@@ -112,7 +112,7 @@ export class JsonQueryTokenizer extends BaseQueryTokenizer {
 
             const expressionList = [];
 
-            for (let v of array(data[1])) {
+            for (const v of array(data[1])) {
                 const ex = this.tokenizeInternal(v as any[]);
                 expressionList.push(ex);
             }

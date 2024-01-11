@@ -275,7 +275,7 @@ export class BaseQueryTokenizer {
     }
 
     public getFieldType(str: string): FieldType {
-        for (let item of this.metadata.fields) {
+        for (const item of this.metadata.fields) {
             if (item.label.toLowerCase() === str?.toLowerCase() || item.name.toLowerCase() === str?.toLowerCase()) {
                 return FieldType.parseFieldType(item.type);
             }
@@ -284,7 +284,7 @@ export class BaseQueryTokenizer {
     }
 
     public getFieldValue(fieldString: string, valueStr: string): Lookup | null {
-        for (let item of this.metadata.fields) {
+        for (const item of this.metadata.fields) {
             if (item.label.toLowerCase() === fieldString?.toLowerCase() || item.name.toLowerCase() === fieldString?.toLowerCase()) {
                 return item.values.find(x => x.name.toLowerCase() === valueStr?.toLowerCase()) || null;
             }

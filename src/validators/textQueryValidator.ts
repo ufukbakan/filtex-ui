@@ -19,7 +19,7 @@ export class TextQueryValidator {
         let openGroupTokenCount = 0;
         let closeGroupTokenCount = 0;
 
-        for (let token of tokens) {
+        for (const token of tokens) {
             if (token.type === TokenType.TokenTypeNone) {
                 throw newInvalidTokenError();
             }

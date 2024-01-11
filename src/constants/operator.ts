@@ -41,7 +41,7 @@ export class Operator {
             this.OperatorNotIn
         ];
 
-        for (let item of list) {
+        for (const item of list) {
             if (item.equals(str)) {
                 return item;
             }
